@@ -37,14 +37,23 @@
                         <constraint firstAttribute="width" constant="300" id="znJ-ln-JaR"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFc-4I-QKC">
+                    <rect key="frame" x="135.5" y="252" width="143" height="30"/>
+                    <state key="normal" title="Send signal to flutter"/>
+                    <connections>
+                        <action selector="sendSignalToFlutter:" destination="-1" eventType="touchUpInside" id="Gck-wv-J4U"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="Eaw-lH-FhJ" firstAttribute="top" secondItem="HFc-4I-QKC" secondAttribute="bottom" constant="16" id="MVU-6r-3p7"/>
                 <constraint firstItem="Eaw-lH-FhJ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="TNN-KU-FLa"/>
                 <constraint firstItem="Eaw-lH-FhJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="b24-OD-tF4"/>
+                <constraint firstItem="HFc-4I-QKC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ipz-Ll-ydi"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="60"/>
+            <point key="canvasLocation" x="-245" y="46"/>
         </view>
     </objects>
     <resources>

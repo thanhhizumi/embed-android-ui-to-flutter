@@ -8,9 +8,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var channel = FlutterMethodChannel()
+    var tappedSendSignalToFlutterDelegate: TappedSendSignalToFlutterDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    @IBAction func sendSignalToFlutter(_ sender: Any) {
+        sendFromNative()
+    }
+    
+    func sendFromNative() {
+        tappedSendSignalToFlutterDelegate?.sendSignal()
+    }
+    
+    func receiveFromFlutter(text: String) {
+        
+    }
+    
 }

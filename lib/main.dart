@@ -1,4 +1,5 @@
 import 'package:embed_native_to_flutter/native_android_view.dart';
+import 'package:embed_native_to_flutter/native_controller.dart';
 import 'package:embed_native_to_flutter/native_ios_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  NativeController _nativeController;
   int _counter = 0;
 
   void _incrementCounter() {
@@ -48,12 +50,29 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text('Flutter view'),
+          TextButton(
+            child: Center(
+              child: Text('Send signal to iOS'),
+            ),
+            onPressed: () {
+              _nativeController.sendFromFlutter("Flutter's signal!");
+              //_nativeController.receiveFromFlutter("Flutter's signal!");
+            },
+          ),
           (() {
             switch (defaultTargetPlatform) {
               case TargetPlatform.android:
                 return Expanded(child: NativeAndroidView());
               case TargetPlatform.iOS:
-                return Expanded(child: NativeIosView());
+                return Expanded(
+                  child: NativeIosView(
+                    onNativeViewCreated: (NativeController controller) {
+                      setState(() {
+                        _nativeController = controller;
+                      });
+                    },
+                  ),
+                );
               default:
                 throw UnsupportedError("Unsupported platform view");
             }
